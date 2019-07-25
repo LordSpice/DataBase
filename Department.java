@@ -13,28 +13,12 @@ public class Department {
 	private String name;
 	private LinkedList<Student> students = new LinkedList<Student>();
 
-	public Department(String code, String name) {
+	public Department(String code, String name, LinkedList<Student> students) {
 		this.code = code;
 		this.name = name;
-
-		try {
-			ObjectInputStream objReader = new ObjectInputStream(new FileInputStream("departments.dat"));
-
-		} catch (FileNotFoundException createFile) {
-
-			System.out.println("File was not found, creating file with default values");
-			
-			try {
-				ObjectOutputStream objCreator = new ObjectOutputStream(new FileOutputStream("departments.dat"));
-				objCreator.writeObject(students);
-			} catch (IOException e) {
-			}
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+		this.students = students;
 	}
-	
+
 	public LinkedList<Student> getStudents() {
 		return students;
 	}
@@ -44,7 +28,37 @@ public class Department {
 	}
 
 	public String toString() {
-		String details = code + " " + name;
+		String details = code + " - " + name;
 		return details;
 	}
+
+	/*public static void main(String[] args) {
+		LinkedList<Department> dpt;
+		try {
+			ObjectInputStream objReader = new ObjectInputStream(new FileInputStream("departments.dat"));
+			
+			LinkedList<Department> readObject = extracted(objReader);
+			LinkedList<Department> temp = readObject;
+
+			System.out.println(temp);
+			objReader.close();
+			
+		} catch (FileNotFoundException createFile) {
+
+			System.out.println("File was not found, creating file with default values");
+
+		} catch (IOException e) {
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+
+	private static LinkedList<Department> extracted(ObjectInputStream objReader)
+			throws IOException, ClassNotFoundException {
+		return (LinkedList<Department>) objReader.readObject();
+	}*/
 }
