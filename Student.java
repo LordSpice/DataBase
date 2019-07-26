@@ -4,14 +4,14 @@ public abstract class Student {
 	private String name;
 	private int id;
 	private double GPA;
-	
+
 	public Student(String name, int id, double GPA) {
 		this.name = name;
 		this.id = id;
 		this.GPA = GPA;
-		
+
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -37,4 +37,9 @@ public abstract class Student {
 	}
 
 	public abstract String getStatus();
+
+	public String toString() {
+		String details = name + " - " + id + " " + getStatus();
+		return details;
+	}
 }
