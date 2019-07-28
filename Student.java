@@ -1,6 +1,8 @@
+import java.io.Serializable;
 
-public abstract class Student {
+public abstract class Student implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private int id;
 	private double GPA;
@@ -39,7 +41,7 @@ public abstract class Student {
 	public abstract String getStatus();
 
 	public String toString() {
-		String details = name + " - " + id + " " + getStatus();
+		String details = name + " - " + id + " - " + GPA + " Standing: " + getStatus();
 		return details;
 	}
 }

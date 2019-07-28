@@ -1,6 +1,8 @@
 
 public class Undergraduate extends Student {
 
+	private static final long serialVersionUID = 1L;
+
 	public Undergraduate(String name, int id, double GPA) {
 		super(name, id, GPA);
 	}
